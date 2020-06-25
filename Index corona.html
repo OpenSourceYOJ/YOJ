@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>코로나 맵</title>
+</head>
+<body>
+    <div>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQHF_EmHqtddMePTbv4ptyYVRLlnBQ6Fz8O3MMGyqAHBlDXmdDs&usqp=CAU" alt="선문대학교">
+    </div>
+    <div id="map" style="width:100%;height:80vh;"></div>
+    
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=14064fe0a1eb2ec241fd8c44554bd1a3&libraries=services,clusterer,drawing"></script>
+    
+	<script>
+        //const url = "https://research-covid-19.herokuapp.com/api/countries";
+        const url = "http://api.corona-19.kr/korea/";
+
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+		        center: new kakao.maps.LatLng(36.79888, 127.07485), // 지도의 중심좌표
+		        level: 6, // 지도의 확대 레벨
+		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		    }; 
+
+		// 지도를 생성한다 
+        var map = new kakao.maps.Map(mapContainer, mapOption); 
+            
+        // fetch(url)
+        //     .then((res) => res.json())
+        //     .then((myJson) => {
+        //         console.log(JSON.stringify(myJson, null, 1));
+        // });
+        fetch(url)
+        .then((res) => res.json())
+        .then((json) => console.log(json));
+</script>
+</body>
+</html>

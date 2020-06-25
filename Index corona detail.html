@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>코로나 확진자 맵</title>
+</head>
+<body>
+    <div>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQHF_EmHqtddMePTbv4ptyYVRLlnBQ6Fz8O3MMGyqAHBlDXmdDs&usqp=CAU" alt="선문대학교">
+    </div>
+    
+    
+    
+    
+	<script>
+        //const url = "https://research-covid-19.herokuapp.com/api/countries";
+        const url = "http://api.corona-19.kr/korea/country/new/";
+
+		 
+            
+        // fetch(url)
+        //     .then((res) => res.json())
+        //     .then((myJson) => {
+        //         console.log(JSON.stringify(myJson, null, 1));
+        // }); //콘솔창 생성
+        fetch(url)
+        .then((res) => res.json())
+        .then((myJson) => {
+            var markers = [];
+            console.log(JSON.stringify(myJson["seoul"]["totalCase"] + ' 서울', null, 1)); //서울
+            var seoul = myJson["seoul"]["totalCase"];
+            console.log(JSON.stringify(myJson["busan"]["totalCase"] + ' 부산', null, 1)); //부산
+            const busan = myJson["busan"]["totalCase"];
+            console.log(JSON.stringify(myJson["daegu"]["totalCase"] + ' 대구', null, 1)); //대구
+            const daegu = myJson["daegu"]["totalCase"];
+            console.log(JSON.stringify(myJson["incheon"]["totalCase"] + ' 인천', null, 1)); //인천
+            const incheon = myJson["incheon"]["totalCase"];
+            console.log(JSON.stringify(myJson["gwangju"]["totalCase"] + ' 광주', null, 1)); //광주
+            const gwangju = myJson["gwangju"]["totalCase"];
+            console.log(JSON.stringify(myJson["daejeon"]["totalCase"] + ' 대전', null, 1)); //대전
+            const daejeon = myJson["daejeon"]["totalCase"];
+            console.log(JSON.stringify(myJson["ulsan"]["totalCase"] + ' 울산', null, 1)); //울산
+            const ulsan = myJson["ulsan"]["totalCase"];
+            console.log(JSON.stringify(myJson["sejong"]["totalCase"] + ' 세종', null, 1)); //세종
+            const sejong = myJson["sejong"]["totalCase"];
+            console.log(JSON.stringify(myJson["gyeonggi"]["totalCase"] + ' 경기', null, 1)); //경기
+            const gyeonggi = myJson["gyeonggi"]["totalCase"];
+            console.log(JSON.stringify(myJson["gangwon"]["totalCase"] + ' 강원', null, 1)); //강원
+            const gangwon = myJson["gangwon"]["totalCase"];
+            console.log(JSON.stringify(myJson["chungbuk"]["totalCase"] + ' 충북', null, 1)); //충북
+            const chungbuk = myJson["chungbuk"]["totalCase"];
+            console.log(JSON.stringify(myJson["chungnam"]["totalCase"] + ' 충남', null, 1)); //충남
+            const chungnam = myJson["chungnam"]["totalCase"];
+            console.log(JSON.stringify(myJson["jeonbuk"]["totalCase"] + ' 전북', null, 1)); //전북
+            const jeonbuk = myJson["jeonbuk"]["totalCase"];
+            console.log(JSON.stringify(myJson["jeonnam"]["totalCase"] + ' 전남', null, 1)); //전남
+            const jeonnam = myJson["jeonnam"]["totalCase"];
+            console.log(JSON.stringify(myJson["gyeongbuk"]["totalCase"] + ' 경북', null, 1)); //경북
+            const gyeongbuk = myJson["gyeongbuk"]["totalCase"];
+            console.log(JSON.stringify(myJson["gyeongnam"]["totalCase"] + ' 경남', null, 1)); //경남
+            const gyeongnam = myJson["gyeongnam"]["totalCase"];
+            console.log(JSON.stringify(myJson["jeju"]["totalCase"] + ' 제주', null, 1)); //제주
+            const jeju = myJson["jeju"]["totalCase"];
+            console.log(JSON.stringify(myJson["quarantine"]["totalCase"] + ' 검역', null, 1)); //검역
+            const quarantine = myJson["quarantine"]["totalCase"];
+            document.write('<h1>seoul</h1>', seoul)
+            // document.write('<h1>busan</h1>', busan)
+            // document.write('<h1>daegu</h1>', daegu)
+            //클러스터리에 마커를 추가합니다
+            //clusterer.addMarkers(markers);
+        });
+        // var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		//     mapOption = {
+		//         center: new kakao.maps.LatLng(36.79888, 127.07485), // 지도의 중심좌표
+		//         level: 6, // 지도의 확대 레벨
+		//         mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		//     }; 
+
+		// // 지도를 생성한다 
+        // var map = new kakao.maps.Map(mapContainer, mapOption);
+</script>
+<div id="map" style="width:100%;height:80vh;"></div>
+<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=14064fe0a1eb2ec241fd8c44554bd1a3&libraries=services,clusterer,drawing"></script>
+<script>
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+		        center: new kakao.maps.LatLng(36.79888, 127.07485), // 지도의 중심좌표
+		        level: 6, // 지도의 확대 레벨
+		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		    }; 
+
+		// 지도를 생성한다 
+        //var map = new kakao.maps.Map(mapContainer, mapOption);
+</script>
+
+myJson["quarantine"]["totalCase"]
+<script>//document.write(seoul);</script>
+</body>
+</html>
