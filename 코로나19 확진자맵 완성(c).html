@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>코로나19 확진자 맵</title>
+</head>
+<body>
+	<div id="map" style="width:70%%;height:80vh;"></div>
+
+     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQHF_EmHqtddMePTbv4ptyYVRLlnBQ6Fz8O3MMGyqAHBlDXmdDs&usqp=CAU width="500" height="150"style="float:left;"">
+     
+     <span DIV style = "position:absolute; left:270;top:180;font-size:6em;  color: gray; background:white;">
+        <!-- &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 코로나 확진자 맵 -->
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;코로나 확진자 맵
+    </span>
+
+    <p style=" font-size:1em; text-align:right;"> 
+ ■  마커 클릭 시 정보 표시
+<br>
+■  천안 - 아산 확진 정보
+
+	<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=48139da8100aaf4e6c3d6de2a73d5e90&libraries=clusterer"></script>
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+		        center: new kakao.maps.LatLng(36.798977, 127.074933), // 지도의 중심좌표
+		        level: 7, // 지도의 확대 레벨
+		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		    }; 
+
+		// 지도를 생성한다 
+		var map = new kakao.maps.Map(mapContainer, mapOption);
+
+        // 마커 클러스터러 생성
+    var clusterer = new kakao.maps.MarkerClusterer({
+        map: map, // 마커들을 클러스터로 관리하고 표시 
+        averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
+        minLevel: 10 // 클러스터 할 최소 지도 레벨 
+    });
+
+        var 데이터 = [
+            [36.792988, 126.952682, '<div style="padding: 10px">확진자 번호: #1 <p> 남성리 205-1 신일유토빌아파트 <p> 격리시설: 단국대학병원 <div>'], //격리중
+            [36.775435, 126.996713, '<div style="padding: 10px">확진자 번호: #2 <p> 온양 5동 645  더 갤러리 미용실 <p> 격리시설: 단국대학병원 <div>'], //격리중
+            [36.775172, 127.056947, '<div style="padding: 10px">확진자 번호: #3 <p> 배방읍 모산로 부근 <p> 격리시설: 천안의료원 <div>'], //격리중
+            [36.815925, 126.972744, '<div style="padding: 10px">확진자 번호: #4 <p> 염치읍 염성길 부근 <p> 격리시설: 단국대학병원 <div>'], //격리중
+            [36.806449, 127.106106, '<div style="padding: 10px">확진자 번호: #5 <p> 서북구 불당동 548-7  <p> 격리시설: 천안의료원 <div>'], //격리중
+            [36.817964, 126.975314, '<div style="padding: 10px">확진자 번호: #8 <p> 염치읍 쌍죽리 147 <p> 격리시설: /격리해제/ <div>'], //퇴원
+            [36.826713, 127.165994, '<div style="padding: 10px">확진자 번호: #9 <p> 동남구 신부동 185-5<p> 격리시설: 천안의료원 <div>'], //퇴원
+            [36.823584, 127.156434, '<div style="padding: 10px">확진자 번호: #10 <p> 동남구 신부동 터미널9길 31 상가동 201호 <p> 격리시설: 천안의료원 <div>'], //퇴원
+            [36.825273, 127.160749, '<div style="padding: 10px">확진자 번호: #11 <p> 동남구 신안동 천안대로 866 <p> 격리시설: 천안의료원 <div>'], //퇴원
+            [36.803823, 127.120340, '<div style="padding: 10px">확진자 번호: #12 <p> 서북구 쌍용3동 <p> 격리시설: 천안의료원 <div>'], //격리중
+            [36.878804, 127.150902, '<div style="padding: 10px">확진자 번호: #13 <p> 서북구 직산읍 삼은리 76-322 <p> 격리시설: 천안의료원 <div>'], //퇴원
+            [36.772313, 127.054416, '<div style="padding: 10px">확진자 번호: #14 <p> 배방읍 공수리 229-6 <p> 격리시설: 단국대학병원 <div>'], //퇴원
+            [36.772119, 127.055248, '<div style="padding: 10px">확진자 번호: #15 <p> 배방읍 배방로 53 KR 황금프라자 3층 <p> 격리시설: 천안의료원 <div>'], //퇴원
+            [36.798515, 127.060425, '<div style="padding: 10px">확진자 번호: #16 <p> 탕정면 지중해마을 <p> 격리시설: 단국대학병원 <div>'], //퇴원
+             [36.799690, 127.101322, '<div style="padding: 10px">확진자 번호: #17 <p> 서북구 불당동 603 <p> 격리시설: 단국대학병원 <div>'], //퇴원
+             [36.832412, 127.147859, '<div style="padding: 10px">확진자 번호: #18 <p> 서북구 두정동 번지 141호 68-16 KR 센트하임프라자 <p> 격리시설: 단국대학병원 <div>'], //퇴원
+             [36.835096, 127.136667, '<div style="padding: 10px">확진자 번호: #19 <p> 서북구 부성동 261-1 <p> 격리시설: 단국대학병원 <div>'], //퇴원
+
+        ]
+
+        var markers = [];
+        for (var i=0; i<데이터.length; i++) {
+                var marker = new kakao.maps.Marker({
+            position: new kakao.maps.LatLng(데이터[i][0], 데이터[i][1]),
+            map: map
+        });
+        // 인포윈도우
+        var infowindow = new kakao.maps.InfoWindow({
+             content : 데이터[i][2] 
+        });
+  
+         markers.push(marker);
+         kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+         kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+         }
+
+         clusterer.addMarkers(Marker);
+
+         // 인포윈도우 표시하는 클로저
+function makeOverListener(map, marker, infowindow) {
+    return function() {
+        infowindow.open(map, marker);
+    };
+}
+function makeOutListener(infowindow) {
+    return function() {
+        infowindow.close();
+    };
+}
+	</script>
+
+</body>
+</html>
+
+
+
