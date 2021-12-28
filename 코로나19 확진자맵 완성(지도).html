@@ -10,32 +10,29 @@
      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQHF_EmHqtddMePTbv4ptyYVRLlnBQ6Fz8O3MMGyqAHBlDXmdDs&usqp=CAU width="500" height="150"style="float:left;"">
      
      <span DIV style = "position:absolute; left:270;top:180;font-size:6em;  color: gray; background:white;">
-        <!-- &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 코로나 확진자 맵 -->
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;코로나 확진자 맵
-    </span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 코로나 확진자 맵
+     </span>
 
     <p style=" font-size:1em; text-align:right;"> 
- ■  마커 클릭 시 정보 표시
+ <!-- ■  마커 클릭 시 정보 표시 -->
 <br>
-■  천안 - 아산 확진 정보
+<!-- ■  천안 - 아산 확진 정보 -->
 
 	<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=48139da8100aaf4e6c3d6de2a73d5e90&libraries=clusterer"></script>
 	<script>
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		var mapContainer = document.getElementById('map'),
 		    mapOption = {
-		        center: new kakao.maps.LatLng(36.798977, 127.074933), // 지도의 중심좌표
-		        level: 7, // 지도의 확대 레벨
-		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		        center: new kakao.maps.LatLng(36.798977, 127.074933),
+		        level: 7,
+		        mapTypeId : kakao.maps.MapTypeId.ROADMAP
 		    }; 
-
-		// 지도를 생성한다 
+		
 		var map = new kakao.maps.Map(mapContainer, mapOption);
 
-        // 마커 클러스터러 생성
     var clusterer = new kakao.maps.MarkerClusterer({
-        map: map, // 마커들을 클러스터로 관리하고 표시 
-        averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
-        minLevel: 10 // 클러스터 할 최소 지도 레벨 
+        map: map,  
+        averageCenter: true,  
+        minLevel: 10
     });
 
         var 데이터 = [
@@ -65,7 +62,7 @@
             position: new kakao.maps.LatLng(데이터[i][0], 데이터[i][1]),
             map: map
         });
-        // 인포윈도우
+		
         var infowindow = new kakao.maps.InfoWindow({
              content : 데이터[i][2] 
         });
@@ -77,21 +74,16 @@
 
          clusterer.addMarkers(Marker);
 
-         // 인포윈도우 표시하는 클로저
-function makeOverListener(map, marker, infowindow) {
-    return function() {
-        infowindow.open(map, marker);
-    };
-}
-function makeOutListener(infowindow) {
-    return function() {
-        infowindow.close();
-    };
-}
-	</script>
-
+	 function makeOverListener(map, marker, infowindow) {
+	    return function() {
+		infowindow.open(map, marker);
+	    };
+	 }
+	 function makeOutListener(infowindow) {
+	    return function() {
+		infowindow.close();
+	    };
+	 }
+	 </script>
 </body>
 </html>
-
-
-
