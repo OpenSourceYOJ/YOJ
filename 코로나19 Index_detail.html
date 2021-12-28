@@ -13,7 +13,6 @@
     
     
 	<script>
-        //const url = "https://research-covid-19.herokuapp.com/api/countries";
         const url = "http://api.corona-19.kr/korea/country/new/";
 
 		 
@@ -66,30 +65,27 @@
             document.write('<h1>seoul</h1>', seoul)
             // document.write('<h1>busan</h1>', busan)
             // document.write('<h1>daegu</h1>', daegu)
-            //클러스터리에 마커를 추가합니다
+
             //clusterer.addMarkers(markers);
         });
-        // var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+        // var mapContainer = document.getElementById('map'),
 		//     mapOption = {
-		//         center: new kakao.maps.LatLng(36.79888, 127.07485), // 지도의 중심좌표
+		//         center: new kakao.maps.LatLng(36.79888, 127.07485),
 		//         level: 6, // 지도의 확대 레벨
-		//         mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		//         mapTypeId : kakao.maps.MapTypeId.ROADMAP
 		//     }; 
-
-		// // 지도를 생성한다 
+ 
         // var map = new kakao.maps.Map(mapContainer, mapOption);
 </script>
 <div id="map" style="width:100%;height:80vh;"></div>
 <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=14064fe0a1eb2ec241fd8c44554bd1a3&libraries=services,clusterer,drawing"></script>
 <script>
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    var mapContainer = document.getElementById('map'),
 		    mapOption = {
-		        center: new kakao.maps.LatLng(36.79888, 127.07485), // 지도의 중심좌표
+		        center: new kakao.maps.LatLng(36.79888, 127.07485),
 		        level: 6, // 지도의 확대 레벨
-		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		        mapTypeId : kakao.maps.MapTypeId.ROADMAP
 		    }; 
-
-		// 지도를 생성한다 
         //var map = new kakao.maps.Map(mapContainer, mapOption);
 </script>
 
