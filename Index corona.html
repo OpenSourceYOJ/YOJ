@@ -13,14 +13,13 @@
     <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=14064fe0a1eb2ec241fd8c44554bd1a3&libraries=services,clusterer,drawing"></script>
     
 	<script>
-        //const url = "https://research-covid-19.herokuapp.com/api/countries";
         const url = "http://api.corona-19.kr/korea/";
 
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		var mapContainer = document.getElementById('map'),
 		    mapOption = {
-		        center: new kakao.maps.LatLng(36.79888, 127.07485), // 지도의 중심좌표
+		        center: new kakao.maps.LatLng(36.79888, 127.07485), 
 		        level: 6, // 지도의 확대 레벨
-		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		        mapTypeId : kakao.maps.MapTypeId.ROADMAP
 		    }; 
 
 		// 지도를 생성한다 
