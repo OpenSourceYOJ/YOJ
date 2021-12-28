@@ -49,14 +49,13 @@
         const url = 
         "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json?lat=36.79888&lng=127.07485&m=5000";
 
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		var mapContainer = document.getElementById('map'),
 		    mapOption = {
-		        center: new kakao.maps.LatLng(36.79888, 127.07485), // 지도의 중심좌표
-		        level: 6, // 지도의 확대 레벨
-		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		        center: new kakao.maps.LatLng(36.79888, 127.07485),
+		        level: 6,
+		        mapTypeId : kakao.maps.MapTypeId.ROADMAP
 		    }; 
-
-		// 지도를 생성한다 
+	
         var map = new kakao.maps.Map(mapContainer, mapOption); 
 
         var clusterer = new kakao.maps.MarkerClusterer({
@@ -64,24 +63,18 @@
             averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
             minLevel: 10 // 클러스터 할 최소 지도 레벨 
         });
-
-        //인포윈도우를 표시하는 클로저를 만드는 함수입니다
+		
         function makeOverListener(map, marker, infowindow) {
             return function () {
                 infowindow.open(map, marker);
             };
         }
 
-        //인포윈도우를 닫는 클로저를 만드는 함수입니다
         function makeOutListener(infowindow) {
             return function () {
                 infowindow.close();
             }
         }
-
-
-        
-
 
        fetch(url)
         .then((res) => res.json())
@@ -89,9 +82,9 @@
             var markers = [];
             const stores = myJson.stores;
             for (var i = 0; i < stores.length; i++){
-                //지도에 마커를 생성하고 표시한다.
+
                 var marker = new kakao.maps.Marker({
-                    position: new kakao.maps.LatLng(stores [i] ["lat"], stores [i] ["lng"] ), //마커의 좌표
+                    position: new kakao.maps.LatLng(stores [i] ["lat"], stores [i] ["lng"] ), 
                 });
 
                 let 재고 ="";
@@ -110,7 +103,6 @@
                         break;
                 }
 
-                // 인포윈도우를 생성합니다
                 var infowindow = new kakao.maps.InfoWindow({
                 content : stores[i] ["name"] + "<br/>" + 재고,
                 });
@@ -127,10 +119,9 @@
                     makeOutListener(infowindow)
                 );
             }
-            //클러스터리에 마커를 추가합니다
+
             clusterer.addMarkers(markers);
         });
 </script>
 </body>
 </html>
-<!-- 2016244044 오현택 -->
